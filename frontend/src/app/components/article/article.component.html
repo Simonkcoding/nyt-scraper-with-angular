@@ -1,0 +1,64 @@
+<div class="container">
+  <br />
+  <mat-card>
+    <h3>Find a NYT article!</h3>
+    <br>
+    <form [formGroup]='searchForm' class='create-form'>
+      <mat-form-field class='field-full-width'>
+        <label>keyword</label>
+        <input matInput formControlName='keyword' #keyword>
+      </mat-form-field>
+
+      <mat-form-field class='field-full-width'>
+          <label>Begin Date</label>
+        <input matInput formControlName='beginDate' #beginDate>
+      </mat-form-field>
+
+      <mat-form-field class='field-full-width'>
+          <label>End Date</label>
+        <input matInput formControlName='endDate' #endDate>
+      </mat-form-field>
+
+      <!-- <mat-form-field>
+        <label>Begin Date</label>
+        <input matInput [matDatepicker]="beginDatePicker" 
+        formControlName="beginDate" 
+        name="beginDate"
+        #beginDate="ngModel"
+        [(ngModel)]="searchForm.beginDate"
+        >
+        <mat-datepicker-toggle matSuffix [for]="beginDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #beginDatePicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>End Date</label>
+        <input matInput [matDatepicker]="endDatePicker" 
+        formControlName="endDate" 
+        name="endDate"
+        #endDate="ngModel"
+        [(ngModel)]="searchForm.endDate"
+        >
+        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+      </mat-form-field> -->
+
+      <br>
+      <button type='submit' [disabled]='searchForm.pristine||searchForm.invalid' mat-raised-button color='primary'
+        (click)='searchArticle(keyword.value,beginDate.value,endDate.value)'>Search</button>
+      <button mat-raised-button color="accent">Clear</button>
+    </form>
+
+  </mat-card>
+</div>
+
+<div>
+  <mat-card>
+    <h3>Search Result</h3>
+    <ul *ngFor="let article of nytArticle">
+      <li>{{article.headline.print_headline}}</li>
+      <li>{{article.web_url}}</li>
+      <li>{{article.pub_date}}</li>
+    </ul>
+  </mat-card>
+</div>
