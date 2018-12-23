@@ -4,8 +4,7 @@
   "description": "i think i can do it",
   "main": "index.js",
   "scripts": {
-    "start":"node server",
-    "heroku-postbuild": "cd frontend && npm install"
+    "start":"node server"
   },
   "repository": {
     "type": "git",
@@ -22,9 +21,5 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongoose": "^5.4.0"
-  },
-  "engines": {
-    "node": "10.14.0",
-    "npm": "6.4.1"
   }
 }
