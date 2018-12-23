@@ -3,6 +3,7 @@
   <br />
   <mat-card>
     <h3>Find a NYT article!</h3>
+    <mat-divider></mat-divider>
     <br>
     <form [formGroup]='searchForm' class='search-form'>
       <mat-form-field class='field-full-width'>
@@ -47,6 +48,7 @@
 <div>
   <mat-card>
     <h3>Search Result</h3>
+    <mat-divider></mat-divider>
     <ul *ngFor="let article of nytArticle">
       <li >{{article.headline.print_headline}}</li>
       <li >{{article.pub_date}}</li>
@@ -62,6 +64,7 @@
 <div class="ctnr right-container">
 <mat-card>
   <h3>Saved Articles</h3>
+  <mat-divider></mat-divider>
   <ul *ngFor="let article of savedArticles">
       <li >{{article.title}}</li>
       <li >{{article.url}}</li>

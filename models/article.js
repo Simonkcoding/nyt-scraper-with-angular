@@ -7,7 +7,7 @@ const ArticleSchema = new Schema({
         isRequired:true
     },
     date:{
-        type:Date
+        type:String
     },
     url:{
         type:String

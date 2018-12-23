@@ -3,9 +3,12 @@ const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
 const articles = require('./routes/api/articles');
+var cors = require('cors')
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use('/api/articles',articles);
+
 if (process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));
     app.get('*',(req,res)=>{
