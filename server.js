@@ -11,9 +11,9 @@ app.use(cors());
 app.use('/api/articles', articles);
 
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, './dist/frontend')));
 app.get('*', function (req, res, next) {
-    res.sendFile('dist/index.html', { root: __dirname });
+    res.sendFile('dist/frontend/index.html', { root: __dirname });
     });
 
 // // if (process.env.NODE_ENV === 'production'){
