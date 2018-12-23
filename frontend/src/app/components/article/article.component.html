@@ -1,52 +1,44 @@
-<div class="container">
+<div class="ctnr left-container">
+  <div>
   <br />
   <mat-card>
     <h3>Find a NYT article!</h3>
     <br>
-    <form [formGroup]='searchForm' class='create-form'>
+    <form [formGroup]='searchForm' class='search-form'>
       <mat-form-field class='field-full-width'>
         <label>keyword</label>
         <input matInput formControlName='keyword' #keyword>
       </mat-form-field>
 
-      <mat-form-field class='field-full-width'>
-          <label>Begin Date</label>
-        <input matInput formControlName='beginDate' #beginDate>
-      </mat-form-field>
-
-      <mat-form-field class='field-full-width'>
-          <label>End Date</label>
-        <input matInput formControlName='endDate' #endDate>
-      </mat-form-field>
-
-      <!-- <mat-form-field>
+      <mat-form-field class='entry'>
         <label>Begin Date</label>
         <input matInput [matDatepicker]="beginDatePicker" 
         formControlName="beginDate" 
         name="beginDate"
-        #beginDate="ngModel"
+        #beginDate
         [(ngModel)]="searchForm.beginDate"
         >
         <mat-datepicker-toggle matSuffix [for]="beginDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #beginDatePicker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field class='entry'>
         <label>End Date</label>
         <input matInput [matDatepicker]="endDatePicker" 
         formControlName="endDate" 
         name="endDate"
-        #endDate="ngModel"
+        #endDate
         [(ngModel)]="searchForm.endDate"
         >
         <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #endDatePicker></mat-datepicker>
-      </mat-form-field> -->
+      </mat-form-field>
 
       <br>
       <button type='submit' [disabled]='searchForm.pristine||searchForm.invalid' mat-raised-button color='primary'
         (click)='searchArticle(keyword.value,beginDate.value,endDate.value)'>Search</button>
-      <button mat-raised-button color="accent">Clear</button>
+      <button mat-raised-button color="accent"
+      (click)='searchForm.reset()'>Clear</button>
     </form>
 
   </mat-card>
@@ -56,9 +48,27 @@
   <mat-card>
     <h3>Search Result</h3>
     <ul *ngFor="let article of nytArticle">
-      <li>{{article.headline.print_headline}}</li>
-      <li>{{article.web_url}}</li>
-      <li>{{article.pub_date}}</li>
+      <li >{{article.headline.print_headline}}</li>
+      <li >{{article.pub_date}}</li>
+      <li >{{article.web_url}}</li>
+      <button mat-raised-button color='primary' 
+      (click)='saveArticle(article.headline.print_headline,article.pub_date, article.web_url)'
+      >Add</button>
     </ul>
   </mat-card>
+</div>
+</div>
+
+<div class="ctnr right-container">
+<mat-card>
+  <h3>Saved Articles</h3>
+  <ul *ngFor="let article of savedArticles">
+      <li >{{article.title}}</li>
+      <li >{{article.url}}</li>
+      <button mat-raised-button color='primary' 
+      (click)='deleteArticle(article._id)'
+      >delete</button>
+    </ul>
+</mat-card>
+
 </div>

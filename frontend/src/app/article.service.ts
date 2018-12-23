@@ -10,9 +10,11 @@ export class ArticleService {
 
 
 
-  url: 'http://localhost:5000';
+  
 
   constructor(private http: HttpClient) { }
+
+  url: string ='http://localhost:5000';
 
   findArticle(keyword, beginDate, endDate) {
     const BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=";
@@ -24,12 +26,7 @@ export class ArticleService {
     return this.http.get(`${this.url}/api/articles`);
   }
 
-  saveAnArticle(title, date, url) {
-    const newArticle = {
-      title,
-      date,
-      url
-    }
+  saveAnArticle(newArticle) {
     return this.http.post(`${this.url}/api/articles/add`, newArticle)
   }
 
