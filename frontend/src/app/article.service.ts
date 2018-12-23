@@ -14,7 +14,7 @@ export class ArticleService {
 
   constructor(private http: HttpClient) { }
 
-  url: string ='articles';
+
 
   findArticle(keyword, beginDate, endDate) {
     const BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=";
@@ -23,14 +23,28 @@ export class ArticleService {
   }
 
   getSavedArticle() {
-    return this.http.get(`${this.url}/api/articles`);
+    return this.http.get(`api/articles`);
   }
 
   saveAnArticle(newArticle) {
-    return this.http.post(`${this.url}/api/articles/add`, newArticle)
+    return this.http.post(`api/articles/add`, newArticle)
   }
 
   deleteSavedArticle(id) {
-    return this.http.get(`${this.url}/api/articles/delete/${id}`);
+    return this.http.get(`api/articles/delete/${id}`);
   }
+
+  // url: string ='articles';
+
+  // getSavedArticle() {
+  //   return this.http.get(`${this.url}/api/articles`);
+  // }
+
+  // saveAnArticle(newArticle) {
+  //   return this.http.post(`${this.url}/api/articles/add`, newArticle)
+  // }
+
+  // deleteSavedArticle(id) {
+  //   return this.http.get(`${this.url}/api/articles/delete/${id}`);
+  // }
 }

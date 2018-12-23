@@ -491,7 +491,6 @@ __webpack_require__.r(__webpack_exports__);
 var ArticleService = /** @class */ (function () {
     function ArticleService(http) {
         this.http = http;
-        this.url = 'articles';
     }
     ArticleService.prototype.findArticle = function (keyword, beginDate, endDate) {
         var BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=";
@@ -499,13 +498,13 @@ var ArticleService = /** @class */ (function () {
         return this.http.get("" + BASEURL + keyword + "&begin_date=" + beginDate + "&end_date=" + endDate + APIKEY);
     };
     ArticleService.prototype.getSavedArticle = function () {
-        return this.http.get(this.url + "/api/articles");
+        return this.http.get("api/articles");
     };
     ArticleService.prototype.saveAnArticle = function (newArticle) {
-        return this.http.post(this.url + "/api/articles/add", newArticle);
+        return this.http.post("api/articles/add", newArticle);
     };
     ArticleService.prototype.deleteSavedArticle = function (id) {
-        return this.http.get(this.url + "/api/articles/delete/" + id);
+        return this.http.get("api/articles/delete/" + id);
     };
     ArticleService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
