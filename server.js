@@ -11,11 +11,10 @@ app.use(cors());
 app.use('/api/articles',articles);
 
 if (process.env.NODE_ENV === 'production'){
-    app.use(express.static('dist'));
+    app.use(express.static('frontend/dist'));
     app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, './frontend/index.html'));
+        res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
       });
-      
 };
 
 const db = require('./config/key').mongoURI;
