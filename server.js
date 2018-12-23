@@ -11,11 +11,10 @@ app.use(cors());
 app.use('/api/articles', articles);
 
 
-app.use(express.static(__dirname + './frontend/dist/frontend'));
-// Handle React routing, return all requests to React app
-app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, './frontend/dist/frontend/', 'index.html'));
-});
+app.use(express.static(path.join(__dirname, 'frontend')));
+app.get('*', function (req, res, next) {
+    res.sendFile('frontend/dist/frontend/index.html', { root: __dirname });
+    });
 
 // // if (process.env.NODE_ENV === 'production'){
 //     app.use(express.static(__dirname + './frontend/dist/frontend'));
