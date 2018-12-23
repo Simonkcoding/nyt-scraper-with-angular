@@ -11,7 +11,7 @@ app.use(cors());
 app.use('/api/articles', articles);
 
 
-app.use(express.static(path.join(__dirname, 'dist/frontend')));
+app.use(express.static(path.join(__dirname, 'dist')));
 app.get('*', function (req, res, next) {
     res.sendFile('dist/frontend/index.html', { root: __dirname });
     });
