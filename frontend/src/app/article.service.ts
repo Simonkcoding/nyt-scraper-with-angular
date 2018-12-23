@@ -14,7 +14,7 @@ export class ArticleService {
 
   constructor(private http: HttpClient) { }
 
-  url: string ='articles/';
+  url: string ='articles';
 
   findArticle(keyword, beginDate, endDate) {
     const BASEURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=";
