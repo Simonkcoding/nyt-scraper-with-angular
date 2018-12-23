@@ -13,7 +13,7 @@ app.use('/api/articles', articles);
 
 app.use(express.static(path.join(__dirname, 'dist')));
 app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
+    res.sendFile(path.join(__dirname + '../dist/frontend/index.html'));
 });
 
 const db = require('./config/key').mongoURI;
